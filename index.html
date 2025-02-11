@@ -232,3 +232,241 @@
         }
     </style>
 </head>
+<body>
+
+  <header>
+    <h1 translate="no">GZ</h1>
+    <div>
+      <a href="pagedetraduction.html">
+        <i class="fas fa-language share-icon"></i> <!-- Иконка перевода -->
+      </a>
+      <a href="Partage.html">
+        <i class="fas fa-share-alt share-icon"></i>
+      </a>
+    </div>
+  </header>
+
+  <div class="divider"></div> <!-- Разделительная линия добавлена здесь -->
+
+  <div class="button-container">
+    <a class="button" href="Faq.html" translate="yes"><i class="fas fa-question-circle"></i>Часто задаваемые вопросы</a>
+    <a class="button" href="Statistiques.html" id="statistiquesButton">
+      <i class="fas fa-chart-bar"></i> Открытие</a>
+    <a class="button" href="Contact.html"><i class="fas fa-envelope"></i>Контакт</a>
+    <a class="button" href="Terms.html"><i class="fas fa-file-contract"></i>Условия</a>
+    <a class="button" href="Confidentialité.html"><i class="fas fa-file-contract"></i>Конфиденциальность</a>
+  </div>
+
+  <script>
+    const button = document.getElementById('statistiquesButton');
+
+    let colors = ['lawngreen', 'white'];
+    let index = 0;
+
+    setInterval(() => {
+      button.style.borderBottom = `4px solid ${colors[index]}`;
+      index = (index + 1) % colors.length; // Цикл по цветам
+    }, 400); // Изменение цвета каждые 400 миллисекунд
+  </script>
+
+  <div class="divider"></div>
+
+  <div class="notification">
+    <span class="notification-text">Давайте вместе откроем секреты наших поколений.</span>
+    <div class="new-message-badge"></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="footer-title">
+    Присоединяйтесь к нам, чтобы открыть секреты нашего поколения всего за несколько кликов!
+  </div>
+
+  <input type="date" class="date-input" id="birthdate" placeholder="Выберите дату рождения" min="1900-01-01" max="" />
+  <select class="country-select" id="countrySelect">
+    <option value="" disabled selected>Выберите страну рождения</option>
+  </select>
+  <p style="text-align: center; color: black; font-size: 0.7em; margin-top: 5px; text-decoration: underline; text-decoration-color: rgb(0, 123, 191);">
+    Отправляя, вы соглашаетесь с нашими условиями использования.
+  </p>
+  <button class="submit-button" type="submit">Отправить</button>
+
+  <i class="fas fa-redo reset-icon" id="resetButton" title="Сбросить"></i>
+
+  <div class="divider"></div>
+
+  <div class="rectangle">
+    <div class="text-line bold" style="font-size: 1em; color: #0056b3;">Как это работает?</div>
+    <div class="text-line"> У вас есть два селектора: первый — это календарь для выбора даты рождения, а второй — это селектор для выбора страны рождения. После того как вы сделаете свои выборы, нажмите "Отправить". Затем вам будет предложено указать ваш биологический пол; нажмите на эту опцию, чтобы стать участником. Наконец, нажмите на кнопку "Открытие", которая мигает зеленым. Затем вы откроете два новых селектора: перемещайтесь в соответствии с вашими предпочтениями, чтобы исследовать статистику. </div>
+  </div>
+
+  <div class="text-line" style="text-align: center; color: black;">
+    <span style="color: #007bff;">_____</span> Не упустите ничего <span style="color: #007bff;">_____</span>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="logo-container">
+        <a href="https://www.facebook.com/share/15nGTcCb4i/.html" target="_blank" class="logo">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://x.com/GZWRD?t=g7yvHCDW2-xPLaTTgea-YA&s=09.html" target="_blank" class="logo">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://www.instagram.com/gzw0orld?igsh=a3M3aWpob21qcmFn.html" target="_blank" class="logo">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://t.me/WorldGZ" target="_blank" class="logo">
+          <i class="fab fa-telegram-plane"></i>
+        </a>
+      </div>
+      <div class="copyright">
+        ©️ 2025 G-Z
+      </div>
+    </div>
+  </footer>
+
+  <!-- Модальное окно -->
+  <div id="genderModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header" style="text-decoration: underline;"> Ваш пол при рождении?</div>
+      <div class="modal-footer">
+        <button class="close-button" id="genderMan" value="Мужчина">Мужчина</button>
+        <button class="close-button" id="genderWoman" value="Женщина">Женщина</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+    import { getDatabase, ref, push, remove } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
+    import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBwfLgPM_tz2aFW33ck5iF9SPSxpPpYSHU",
+      authDomain: "genz-9f218.firebaseapp.com",
+      databaseURL: "https://genz-9f218-default-rtdb.firebaseio.com",
+      projectId: "genz-9f218",
+      storageBucket: "genz-9f218.firebasestorage.app",
+      messagingSenderId: "286958713700",
+      appId: "1:286958713700:web:29d878befaf6dd8c049871",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const auth = getAuth(app);
+
+    // Анонимная аутентификация
+    signInAnonymously(auth)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log("Пользователь подключен: ", user.uid);
+      })
+      .catch((error) => {
+        console.error("Ошибка при анонимной авторизации: ", error);
+      });
+
+    const today = new Date().toISOString().split("T")[0];
+    document.getElementById("birthdate").setAttribute('max', today);
+
+    // Загрузка списка стран
+    fetch('https://restcountries.com/v3.1/all')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Ошибка сети: ' + response.status);
+        }
+        return response.json();
+      })
+      .then(data => {
+        data.sort((a, b) => a.name.common.localeCompare(b.name.common));
+        const countrySelect = document.getElementById('countrySelect');
+        data.forEach(country => {
+          const option = document.createElement('option');
+          option.value = country.name.common;
+          option.textContent = country.name.common;
+          countrySelect.appendChild(option);
+        });
+      })
+      .catch(error => console.error('Ошибка при загрузке стран:', error));
+
+    let lastSubmittedId = null;
+
+    document.querySelector('.submit-button').addEventListener('click', function() {
+      const birthdate = document.getElementById('birthdate').value;
+      const country = document.getElementById('countrySelect').value;
+
+      if (birthdate && country) {
+        const submitButton = document.querySelector('.submit-button');
+        submitButton.textContent = "Пожалуйста, подождите...";
+        submitButton.style.backgroundColor = 'orange';
+
+        document.getElementById('genderModal').style.display = 'block';
+      } else {
+        alert("Пожалуйста, введите дату рождения и выберите страну!");
+      }
+    });
+
+    document.getElementById('genderMan').addEventListener('click', function() {
+      submitData("Мужчина");
+    });
+    document.getElementById('genderWoman').addEventListener('click', function() {
+      submitData("Женщина");
+    });
+
+    function submitData(gender) {
+      const birthdate = document.getElementById('birthdate').value;
+      const country = document.getElementById('countrySelect').value;
+      const submitButton = document.querySelector('.submit-button');
+
+      const newEntryRef = push(ref(database, 'birthdates'), {
+        date: birthdate,
+        country: country,
+        gender: gender
+      });
+
+      lastSubmittedId = newEntryRef.key;
+
+      newEntryRef.then(() => {
+        submitButton.style.backgroundColor = 'green';
+        submitButton.textContent = "Отправлено";
+        submitButton.disabled = true;
+        document.getElementById('resetButton').style.display = "block";
+        document.getElementById('genderModal').style.display = 'none';
+      }).catch((error) => {
+        submitButton.style.backgroundColor = 'red';
+        submitButton.textContent = "Ошибка";
+        console.error("Ошибка при отправке: ", error);
+      });
+    }
+
+    document.getElementById('resetButton').addEventListener('click', function() {
+      if (lastSubmittedId) {
+        remove(ref(database, `birthdates/${lastSubmittedId}`))
+          .then(() => {
+            document.getElementById('birthdate').value = '';
+            document.getElementById('countrySelect').value = '';
+            const submitButton = document.querySelector('.submit-button');
+            submitButton.textContent = "Отправить";
+            submitButton.style.backgroundColor = '#007bff';
+            submitButton.disabled = false;
+            document.getElementById('resetButton').style.display = "none";
+          })
+          .catch((error) => {
+            console.error("Ошибка при сбросе данных: ", error);
+          });
+      }
+    });
+
+    // Закрыть модальное окно при клике вне его
+    window.onclick = function(event) {
+      const modal = document.getElementById('genderModal');
+      if (event.target == modal) {
+        modal.style.display = "none";
+        const submitButton = document.querySelector('.submit-button');
+        submitButton.style.backgroundColor = 'red';
+        submitButton.textContent = "Ошибка";
+      }
+    };
+  </script>
+</body>
+</html>
