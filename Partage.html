@@ -10,7 +10,7 @@
         body {
             background-color: #f5f5f5; /* Светлый фон */
             color: var(--text-color);
-            font-family: 'Roboto', Arial, sans-serif; /* Использовать схожий шрифт */
+            font-family: 'Roboto', Arial, sans-serif; /* Использовать похожий шрифт */
             padding: 20px;
             margin: 0;
         }
@@ -25,9 +25,9 @@
             font-family: 'Billabong', cursive;
             color: #007BFF; /* Синий цвет */
             border: 1.5px solid #007BFF; /* Синяя рамка */
-            padding: 5px 10px;
+            padding: 4px;
             display: inline-block;
-            border-radius: 10px; /* Закругленные углы */
+            border-radius: 12px; /* Закругленные углы */
         }
         .divider {
             height: 1px;
@@ -55,7 +55,7 @@
         .social-icons {
             display: flex;
             justify-content: center;
-            gap: 15px; /* Пробел между иконками */
+            gap: 15px; /* Интервал между иконками */
             margin-top: 20px;
         }
         .icon {
@@ -63,7 +63,7 @@
             color: #007BFF; /* Синий цвет */
             transition: color 0.3s;
             border: 1px solid #007BFF; /* Синяя рамка */
-            border-radius: 3px;
+            border-radius: 10px;
             padding: 8px; 
             background-color: rgba(0, 119, 190, 0.1); /* Светлый фон */
             display: inline-block;
@@ -95,9 +95,10 @@
         }
         .copy-button {
             margin-top: 10px;
-            padding: 10px 20px;
+            padding: 10px 17px;
             border: 1px solid #007BFF; /* Синяя рамка */
-            background-color: transparent;
+            border-radius: 13px;
+            background-color: rgba(0, 119, 190, 0.1); /* Светлый фон */
             color: #007BFF; /* Синий цвет */
             cursor: pointer;
             font-size: 16px;
@@ -111,12 +112,7 @@
             margin-top: 10px;
             color: #007BFF; /* Синий цвет */
         }
-        .copyright {
-            margin-top: 40px;
-            color: darkgray;
-            font-size: 0.8em;
-            text-align: center;
-        }
+        
     </style>
 </head>
 <body>
@@ -129,18 +125,18 @@
     <div class="divider"></div>
 
     <div class="content">
-        <h1>Поделитесь GZ</h1>
+        <h1>Поделитесь G-Z</h1>
         <div class="short-divider"></div>
-        <p class="social-message">Давайте узнаем, кто мы и как мы относимся к этому миру! Помимо развлечений, давайте узнаем больше о нашем поколении:</p>
+        <p class="social-message">Давайте узнаем, кто мы и как мы принадлежим к миру! Кроме развлечений, давайте узнаем больше о наших поколениях:</p>
 
         <div class="social-icons">
             <a href="https://www.g-z.online" target="_blank" class="icon" onclick="share('Facebook')">
                 <i class="fab fa-facebook"></i>
             </a>
-            <a href="https://api.whatsapp.com/send?text=Присоединяйтесь%20к%20G-Z%20!%20Давайте%20вместе%20узнаем%20фасцинующие%20тайны%20нашего%20поколения,%20с%20увлекательными%20открытиями%20и%20развлекательными%20моментами.%20Станьте%20частью%20этого%20уникального%20приключения!%20🌟%20https://www.g-z.online" target="_blank" class="icon" onclick="share('WhatsApp')">
+            <a href="https://api.whatsapp.com/send?text=Присоединяйтесь%20к%20G-Z%20!%20Вместе,%20давайте%20исследовать%20увлекательные%20секреты%20нашего%20поколения,%20между%20удивительными%20открытиями%20и%20моментами%20развлечения.%20Станьте%20частью%20этого%20уникального%20приключения!%20🌟%20https://www.g-z.online" target="_blank" class="icon" onclick="share('WhatsApp')">
                 <i class="fab fa-whatsapp"></i>
             </a>
-            <a href="https://telegram.me/share/url?url=https://www.g-z.online&text=Присоединяйтесь%20к%20G-Z%20!%20Давайте%20вместе%20узнаем%20фасцинующие%20тайны%20нашего%20поколения,%20с%20увлекательными%20открытиями%20и%20развлекательными%20моментами.%20Станьте%20частью%20этого%20уникального%20приключения!%20🌟" target="_blank" class="icon" onclick="share('Telegram')">
+            <a href="https://telegram.me/share/url?url=https://www.g-z.online&text=Присоединяйтесь%20к%20G-Z%20!%20Вместе,%20давайте%20исследовать%20увлекательные%20секреты%20нашего%20поколения,%20между%20удивительными%20открытиями%20и%20моментами%20развлечения.%20Станьте%20частью%20этого%20уникального%20приключения!%20🌟" target="_blank" class="icon" onclick="share('Telegram')">
                 <i class="fab fa-telegram"></i>
             </a>
             <a href="https://www.g-z.online" target="_blank" class="icon" onclick="share('Twitter')">
@@ -155,25 +151,22 @@
             <span style="color: #007BFF;">Или</span> <!-- Синий цвет -->
         </div>
 
-        <p class="copy-message">Скопируйте ссылку для поделиться:</p>
-        <button class="copy-button" onclick="copyLink()">Скопировать</button>
+        <p class="copy-message">Скопируйте ссылку для分享:</p>
+        <button class="copy-button" onclick="copyLink()">Копировать</button>
         <p class="copy-status" id="copyStatus"></p>
     </div>
 
-    <div class="copyright">
-        &copy; 2025 <span translate="no">G-Z</span>. Все права защищены.
-    </div>
-
+    
     <script>
-        const shareText = "Присоединяйтесь к G-Z! Давайте вместе узнаем фасцинующие тайны нашего поколения, с увлекательными открытиями и развлекательными моментами. Станьте частью этого уникального приключения! 🌟";
+        const shareText = "Присоединяйтесь к G-Z! Вместе, давайте исследовать увлекательные секреты нашего поколения, между удивительными открытиями и моментами развлечения. Станьте частью этого уникального приключения! 🌟";
         const shareLink = "https://www.g-z.online";
 
         function copyLink() {
             navigator.clipboard.writeText(shareLink).then(() => {
-                document.getElementById("copyStatus").innerText = "Следующая ссылка для поделиться скопирована в буфер обмена: " + shareLink;
+                document.getElementById("copyStatus").innerText = "Следующая ссылка для分享 была скопирована в буфер обмена: " + shareLink;
             }).catch(err => {
-                console.error("Ошибка при копировании текста: ", err);
-                document.getElementById("copyStatus").innerText = "Ошибка при копировании текста.";
+                console.error("Ошибка копирования текста: ", err);
+                document.getElementById("copyStatus").innerText = "Ошибка копирования текста.";
             });
         }
 
@@ -184,7 +177,7 @@
                     url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareLink)}&quote=${encodeURIComponent(shareText)}`;
                     break;
                 case 'WeChat':
-                    alert("Поделиться в WeChat обычно делается через приложение.");
+                    alert("分享 в WeChat обычно происходит через приложение.");
                     return;
                 case 'Twitter':
                     url = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareLink)}&text=${encodeURIComponent(shareText)}`;
